@@ -1,0 +1,17 @@
+# 텍스트 파일 처리
+
+1) 500MB - 1GB와 같이 파일의 크기가 큰 경우, readline()함수 사용한다.
+
+   while루프 사용 / DataSet
+
+2) 파일 크기 작은 경우는 read나 readline함수 중 선택
+
+  - 대부분 read사용함.
+
+* EOF(End Of File)
+
+* tell() 메소드
+
+* seek(0): 처음으로 돌아가서 다시 반복
+
+
