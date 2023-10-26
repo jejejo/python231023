@@ -17,18 +17,18 @@ for n in range(1,11):
         #한글이 깨지는 경우
         page = data.decode('utf-8', 'ignore')
         soup = BeautifulSoup(page, 'html.parser')
-        list = soup.find_all('span', attrs={'data-role':'list-title-text'})
+        list = soup.find_all('td', attrs={'class':'subject'})
+
         #<td class="subject">
         # <a href="/board/view.php?table=bestofbest">우리나라 지금 현재 전쟁나면 필패인 이유 추가</a><span class="list_memo_count_span"> [18]
         # </span>   </td>
 
         for item in list:
+                #에러처리(try ~ catch)
                 try:
-                        title = item.text.strip() 
+                        title = item.find("a").text.strip()
                         print(title)
-                        # if (re.search('아이폰', title)):
-                        #         print(title.strip())
-                        #         print('https://www.clien.net'  + item['href'])
+                       
                 except:
                         pass
         
