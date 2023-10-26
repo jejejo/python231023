@@ -19,7 +19,7 @@ else:
 # #운영체제
 print("운영체제이름:", name)
 print("환경변후:", environ)
- 
+
 # result = glob.glob("c:\\work\\*.py")
 # print(result)
 for item in glob.glob("c:\\work\\*."):
