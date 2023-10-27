@@ -1,0 +1,43 @@
+import requests
+from bs4 import BeautifulSoup
+from openpyxl import Workbook
+
+search_keyword = '호주 신혼여행'
+
+# create a new Excel workbook and select the active sheet
+wb = Workbook()
+ws = wb.active
+
+# write the column names to the first row of the sheet
+ws.append(["블로그명", "블로그주소", "블로그 상세주소", "글 제목", "포스팅 날짜"])
+
+for page in range(1, 101):
+    url = f'https://search.naver.com/search.naver?where=view&sm=tab_jum&query={search_keyword}&start={page * 10 - 9}'
+
+    response = requests.get(url)
+    soup = BeautifulSoup(response.text, 'html.parser')
+
+    posts = soup.find_all('li', {'class': 'bx'})
+    for post in posts:
+        try:
+            blog_info_elem = post.find("div", {'class': 'user_info'})
+            blog_address_elem = blog_info_elem.find("a", attrs={"class": "name"})
+            blog_address = blog_address_elem["href"]
+            blog_address_title = blog_address_elem.text
+
+            post_title_elem = post.find('a', {'class': 'title_link _cross_trigger'})
+            post_title = post_title_elem.text if post_title_elem else ""
+
+            post_url_elem = post.find('a', {'class': 'title_link _cross_trigger'})
+            post_url = post_url_elem["href"] if post_url_elem else ""
+
+            # Create the full blog post URL
+            full_blog_url = f'https://blog.naver.com{post_url}'
+
+            ws.append([blog_address, blog_address_title, full_blog_url, post_title, ""])
+        except AttributeError:
+            continue  # 예외 발생 시 해당 블로그 데이터를 건너뜁니다.
+
+# 저장할 파일 경로와 이름 설정
+file_path = '호주신혼여행.xlsx'
+wb.save(file_path)
