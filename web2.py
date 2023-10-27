@@ -1,6 +1,6 @@
-
+#웹서버에 요청
 import requests
-
+#크롤링
 from bs4 import BeautifulSoup
 
 url = "https://www.daangn.com/fleamarket/"

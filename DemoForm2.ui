@@ -100,22 +100,6 @@
  <resources/>
  <connections>
   <connection>
-   <sender>pushButton</sender>
-   <signal>clicked()</signal>
-   <receiver>MainWindow</receiver>
-   <slot>firtstClick()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>158</x>
-     <y>175</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>212</x>
-     <y>225</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
    <sender>pushButton_2</sender>
    <signal>clicked()</signal>
    <receiver>MainWindow</receiver>
@@ -147,10 +131,26 @@
     </hint>
    </hints>
   </connection>
+  <connection>
+   <sender>pushButton</sender>
+   <signal>clicked()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>firstClick()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>190</x>
+     <y>179</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>220</x>
+     <y>236</y>
+    </hint>
+   </hints>
+  </connection>
  </connections>
  <slots>
-  <slot>firtstClick()</slot>
   <slot>secondClick()</slot>
   <slot>thirdClick()</slot>
+  <slot>firstClick()</slot>
  </slots>
 </ui>
