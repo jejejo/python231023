@@ -14,7 +14,6 @@ driver = webdriver.Chrome(options=options)
 URL = 'https://search.shopping.naver.com/search/all?frm=NVSHATC&origQuery=%EB%85%B8%ED%8A%B8%EB%B6%81&pagingIndex=1&pagingSize=40&productSet=total&query=%EB%85%B8%ED%8A%B8%EB%B6%81&sort=price_asc&timestamp=&viewType=list'
 
 driver.get(URL)
-
 #가격을 검색하는 경우 
 #<span class="price_num__S2p_v" data-testid="SEARCH_PRODUCT_PRICE">300,000원</span>
 
